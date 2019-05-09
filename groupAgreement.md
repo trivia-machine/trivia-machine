@@ -50,7 +50,8 @@
       - Expectations for the previous weekend?????????????(remember we have a lot of turn ins to redo)
       - if we work this weekend, we will let others know ahead of time.
 
-#### Strategies to be sure everyone is heard.
+#### Strategies to be sure everyone is heard
+
       - Make sure that everyone get a chance to voice their ideas and thoughts.
       - Make sure everyone gets a chance to finish their sentences.
       - Verbal yes or no from everyone on decisions.
