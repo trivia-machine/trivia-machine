@@ -1,6 +1,7 @@
 # Group Agreement
 
 ### Conflict Plan
+    (Battle Royale with Pugil Sticks)
 
     - How will you be sure you are creating a safe environment?
       - be respectful and thoughtful
@@ -42,8 +43,8 @@
       on slack or by phone
     Nicole - 
     Dana - 
-    Trey - Contacting me anytime during the project week is fine. If I don't answer soon after, I am sleeping or I have stepped away 
-           from computer or phone. I will get back to you in the morning or shortly.
+    Trey - Contacting me anytime during the project week is fine. If I don't answer soon after, I am sleeping or 
+           I have stepped away from computer or phone. I will get back to you in the morning or shortly.
 
       - after 9 pm we won’t expect to connect until next morning
       - up until 9pm we may be working on project
