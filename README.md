@@ -1,12 +1,12 @@
 # Trivia Machine
 
-* [User Stories](userStories.md)
+* [User Stories](planning/userStories.md)
 
 * [Group Agreement](groupAgreement.md)
 
-* [Sample Poll Questions](pollQuestions.md)
+* [Sample Poll Questions](planning/pollQuestions.md)
 
-* [Wireframe](wireframe.md)
+* [Wireframe](planning/wireframe.md)
 
 ## Project Description
 

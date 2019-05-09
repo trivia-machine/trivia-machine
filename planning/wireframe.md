@@ -1,6 +1,6 @@
 # Wire Frame
 
-![Wire Frame Image](assests/wireframe.jpg)
+![Wire Frame Image](../assests/wireframe.jpg)
 
 ## User View
 
