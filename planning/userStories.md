@@ -1,12 +1,3 @@
 # User Stories
 
-## Stories
-
-<!-- As a {role}, I want to {task/feature} so that {business reason}. -->
-* Role 1 <!-- Maybe Dev -->
-
-* Role 2 <!-- User? -->
-
-* Role 3 <!-- Project Manager? -->
-
-## Acceptance Criteria/ Tests
+[User Stories Google Doc](https://docs.google.com/document/d/1EPuuq-_6P5PVdozTsiyIG629ptecHgPFdGXX73yEIGE/edit?usp=sharing)
