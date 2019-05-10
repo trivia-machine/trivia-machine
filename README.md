@@ -25,5 +25,3 @@ A device (intended to be placed in a common area) that displays the hourly forec
 ### Sources
 
 * National Weather Service
-
-* Google Maps
