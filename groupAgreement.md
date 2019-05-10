@@ -41,7 +41,7 @@
 
     Contact after hours: 
       on slack or by phone
-    Nicole - 
+    Nicole - Contacting me anytime during the project week is fine. Slack is good, if you want to get ahold of my quicker text is also fine; 425-367-8562. Some days a may runa a little late, depending on what bus I manage to catch, am willing and able to stay late most days.
     Dana - 
     Trey - Contacting me anytime during the project week is fine. If I don't answer soon after, I am sleeping or 
            I have stepped away from computer or phone. I will get back to you in the morning or shortly.
