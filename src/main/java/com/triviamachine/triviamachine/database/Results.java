@@ -67,4 +67,8 @@ public class Results {
     public void setSchedule(QuestionSchedule schedule) {
         this.schedule = schedule;
     }
+
+    public void setQuestion(Question question) {
+        this.question = question;
+    }
 }

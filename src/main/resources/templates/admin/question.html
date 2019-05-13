@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Admin Question Manipulation</title>
+    <div th:replace="~{common :: styling}"></div>
+</head>
+
+<body>
+<header>
+
+</header>
+
+
+<main>
+    <ul>
+        <li class="question" th:each="question : ${questions}">
+            <p th:text="${question.getQuestionText()}"></p>
+            <p th:text="${question.getAnswerOne()}"></p>
+            <p th:text="${question.getAnswerTwo()}"></p>
+            <p th:text="${question.getAnswerThree()}"></p>
+            <p th:text="${question.getAnswerFour()}"></p>
+        </li>
+    </ul>
+</main>
+
+
+<footer>
+
+</footer>
+</body>

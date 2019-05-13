@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Admin Question Results</title>
+    <div th:replace="~{common :: styling}"></div>
+</head>
+
+<body>
+<header>
+
+</header>
+
+
+<main>
+    <ul>
+        <li class="result" th:each="result : ${results}">
+            <p th:text="${result.getQuestion().getQuestionText()}"></p>
+            <p th:text="${result.getQuestion().getAnswerOne() + ': ' +
+            result.getAnswerOneVotes()}"></p>
+            <p th:text="${result.getQuestion().getAnswerTwo() + ': ' +
+            result.getAnswerTwoVotes()}"></p>
+            <p th:text="${result.getQuestion().getAnswerThree() + ': ' +
+            result.getAnswerThreeVotes()}"></p>
+            <p th:text="${result.getQuestion().getAnswerFour() + ': ' +
+            result.getAnswerFourVotes()}"></p>
+            <!--TODO:Add date when time allows-->
+        </li>
+    </ul>
+</main>
+
+
+<footer>
+
+</footer>
+</body>
