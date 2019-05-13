@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import java.util.List;
+import java.util.Optional;
 
 @Entity
 public class Question {
@@ -17,6 +18,7 @@ public class Question {
     private String answerTwo;
     private String answerThree;
     private String answerFour;
+    private Optional<Byte> correctAnswer;
 
     @OneToMany(mappedBy = "question")
     private List<Results> questionResults;
@@ -74,5 +76,13 @@ public class Question {
 
     public List<QuestionSchedule> getTimesScheduled() {
         return timesScheduled;
+    }
+
+    public byte getCorrectAnswer() {
+        return correctAnswer;
+    }
+
+    public void setCorrectAnswer(byte correctAnswer) {
+        this.correctAnswer = correctAnswer;
     }
 }
