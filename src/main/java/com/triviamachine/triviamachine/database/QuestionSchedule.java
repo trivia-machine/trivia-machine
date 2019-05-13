@@ -7,7 +7,7 @@ import java.util.Date;
 public class QuestionSchedule {
     @Id
     @GeneratedValue
-    long id;
+    private long id;
 
     @ManyToOne
     private Question question;
@@ -16,4 +16,32 @@ public class QuestionSchedule {
 
     @OneToOne
     private Results results;
+
+    public Question getQuestion() {
+        return question;
+    }
+
+    public void setQuestion(Question question) {
+        this.question = question;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public Results getResults() {
+        return results;
+    }
+
+    public void setResults(Results results) {
+        this.results = results;
+    }
+
+    public long getId() {
+        return id;
+    }
 }
