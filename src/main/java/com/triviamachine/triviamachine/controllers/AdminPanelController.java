@@ -6,8 +6,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.annotation.PostConstruct;
@@ -70,9 +69,6 @@ public class AdminPanelController {
 
     @GetMapping("")
     public String adminPanelDefaultRoute(){
-
-
-
         return "redirect:/admin/schedule";
     }
 
@@ -91,6 +87,31 @@ public class AdminPanelController {
         model.addAttribute("questions", questions);
         return "admin/question";
     }
+
+    @PostMapping("/createQuestion")
+    public RedirectView newQuestion(
+            @RequestParam String questionText,
+            @RequestParam String answerOne,
+            @RequestParam String answerTwo,
+            @RequestParam String answerThree,
+            @RequestParam String answerFour
+    ) {
+
+        Question question = new Question();
+        question.setQuestionText(questionText);
+        question.setAnswerOne(answerOne);
+        question.setAnswerTwo(answerTwo);
+        question.setAnswerThree(answerThree);
+        question.setAnswerFour(answerFour);
+
+        questionRepo.save(question);
+
+        return new RedirectView("/admin/question");
+    }
+
+    //TODO: "update question" route
+
+    //TODO: "delete question" route
 
     @GetMapping("/results")
     public String getResultsPanel(@AuthenticationPrincipal AdminUser user, Model model){
