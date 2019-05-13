@@ -9,11 +9,21 @@
 
 <body>
 <header>
-
+    <div th:replace="~{common :: navbar}"></div>
 </header>
 
 
 <main>
+
+    <form action="/admin/createQuestion" method="post">
+        <input type="text" name="questionText" placeholder="Question?" required>
+        <input type="text" name="answerOne" placeholder="Answer One" required>
+        <input type="text" name="answerTwo" placeholder="Answer Two" required>
+        <input type="text" name="answerThree" placeholder="Answer Three (optional)">
+        <input type="text" name="answerFour" placeholder="Answer Four (optional)">
+        <button type="submit">Create New Question</button>
+    </form>
+
     <ul>
         <li class="question" th:each="question : ${questions}">
             <p th:text="${question.getQuestionText()}"></p>
