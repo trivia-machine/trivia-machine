@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Admin Schedule Panel</title>
+    <div th:replace="~{common :: styling}"></div>
+</head>
+
+<body>
+<header>
+
+</header>
+
+
+<main>
+    <ul>
+        <li class="schedule" th:each="schedule : ${schedules}">
+            <p th:text="${schedule.date}"></p>
+            <p th:text="${schedule.question.getQuestionText()}"></p>
+        </li>
+    </ul>
+</main>
+
+
+<footer>
+
+</footer>
+</body>
