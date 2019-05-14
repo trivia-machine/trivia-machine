@@ -1,6 +1,7 @@
 package com.triviamachine.triviamachine.controllers;
 
 import com.triviamachine.triviamachine.database.*;
+import com.triviamachine.triviamachine.util.ContentNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -155,9 +156,40 @@ public class AdminPanelController {
         return new RedirectView("/admin/question");
     }
 
-    //TODO: "update question" route
 
-    //TODO: "delete question" route
+    @PostMapping("/question/{id}")
+    public RedirectView updateQuestion(
+            @PathVariable Long id,
+            @RequestParam String questionText,
+            @RequestParam String answerOne,
+            @RequestParam String answerTwo,
+            @RequestParam String answerThree,
+            @RequestParam String answerFour
+    ) {
+        Optional<Question> questions = this.questionRepo.findById(id);
+        if (questions.isPresent()) {
+            Question foundQuestion = questions.get();
+
+            foundQuestion.setQuestionText(questionText);
+            foundQuestion.setAnswerOne(answerOne);
+            foundQuestion.setAnswerTwo(answerTwo);
+            foundQuestion.setAnswerThree(answerThree);
+            foundQuestion.setAnswerFour(answerFour);
+
+            this.questionRepo.save(foundQuestion);
+
+            return new RedirectView("/admin/question");
+        }
+        throw new ContentNotFoundException();
+    }
+
+
+    @DeleteMapping("question/{id}")
+    public RedirectView deleteQuestion(@PathVariable Long id) {
+    this.questionRepo.deleteById(id);
+    return new RedirectView("/admin/question");
+    }
+
 
     @GetMapping("/results")
     public String getResultsPanel(@AuthenticationPrincipal AdminUser user, Model model){
