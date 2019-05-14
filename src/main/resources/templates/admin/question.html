@@ -22,9 +22,6 @@
         <input type="text" name="answerThree" placeholder="Answer Three (optional)">
         <input type="text" name="answerFour" placeholder="Answer Four (optional)">
         <button type="submit">Create New Question</button>
-        <!--        TODO: figure out how to send to a new page with form for updating questions-->
-        <!--        TODO: figure out how to delete that same question once there-->
-        <!--        <button th:href="@{/admin/question/">Update Existing Question</button>-->
     </form>
 
     <ul>
@@ -35,9 +32,11 @@
             <p th:text="${question.getAnswerThree()}"></p>
             <p th:text="${question.getAnswerFour()}"></p>
             <a th:href="${'/admin/schedule/' + question.getId()}">Schedule your Question</a>
+            <a th:href="${'/admin/update/' + question.getId()}">Update</a>
             <form th:action="${'/admin/question/' + question.getId()}" th:method="delete">
                 <button>Delete</button>
             </form>
+
         </li>
     </ul>
 </main>

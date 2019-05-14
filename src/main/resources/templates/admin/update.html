@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Admin Question Manipulation</title>
+    <div th:replace="~{common :: styling}"></div>
+</head>
+
+<body>
+<header>
+    <div th:replace="~{common :: navbar}"></div>
+</header>
+
+<main>
+    <form th:action="${'/admin/update/' + question.getId()}" th:method="post">
+        <input type="text" name="questionText" th:value="${question.getQuestionText()}" required>
+        <input type="text" name="answerOne" th:value="${question.getAnswerOne()}" required>
+        <input type="text" name="answerTwo" th:value="${question.getAnswerTwo()}" required>
+        <input type="text" name="answerThree" th:value="${question.getAnswerThree()}">
+        <input type="text" name="answerFour" th:value="${question.getAnswerFour()}">
+        <button type="submit">Update Question</button>
+    </form>
+</main>
+
+
+</body>
+</html>

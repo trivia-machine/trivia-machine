@@ -78,6 +78,7 @@ public class AdminPanelController {
         return "redirect:/admin/schedule";
     }
 
+
     @GetMapping("/schedule/{id}")
     public String scheduling(
             @PathVariable Long id,
@@ -119,7 +120,8 @@ public class AdminPanelController {
         return "admin/schedule";
     }
 
-    // TODO: "delete schedule" route
+  
+
     @DeleteMapping("schedule/{id}")
     public RedirectView deleteSchedule(
             @PathVariable Long id
@@ -127,6 +129,7 @@ public class AdminPanelController {
         this.questionScheduleRepo.deleteById(id);
         return new RedirectView("/admin/schedule");
     }
+
 
 
     // question manipulation
@@ -160,7 +163,19 @@ public class AdminPanelController {
     }
 
 
-    @PostMapping("/question/{id}")
+    @GetMapping("/update/{id}")
+    public String updateDefaultRoute(
+            @PathVariable Long id,
+            Model model
+    )
+    {
+        Optional<Question> question = questionRepo.findById(id);
+        model.addAttribute("question", question.get());
+        return "admin/update";
+    }
+
+
+    @PostMapping("/update/{id}")
     public RedirectView updateQuestion(
             @PathVariable Long id,
             @RequestParam String questionText,
