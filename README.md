@@ -24,4 +24,4 @@ A device (intended to be placed in a common area) that displays the hourly forec
 
 ### Sources
 
-* National Weather Service
+* [Travis Horn](https://travishorn.com/stacked-bar-chart-with-chart-js-846ebdf11c4e)
