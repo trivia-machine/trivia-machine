@@ -14,7 +14,8 @@ function handleVote(event){
     data: {answer: event.target.id}
     }).then(results => showResults(results));
 }
-
+// ChartJS setup methodology courtesy of
+// https://travishorn.com/stacked-bar-chart-with-chart-js-846ebdf11c4e
 function showResults(results){
 results=JSON.parse(results);
     $('form').css('display','none');
