@@ -5,15 +5,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.annotation.PostConstruct;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/admin")
@@ -70,11 +70,48 @@ public class AdminPanelController {
         return new RedirectView("/admin");
     }
 
+
+    // schedule manipulation
     @GetMapping("")
     public String adminPanelDefaultRoute(){
         return "redirect:/admin/schedule";
     }
 
+    // TODO: "create schedule" route
+
+    @GetMapping("/schedule/{id}")
+    public String scheduling(
+            @PathVariable Long id,
+            Model model
+    ){
+        Optional<Question> question = questionRepo.findById(id);
+        model.addAttribute("question", question.get());
+        return "admin/scheduling";
+    }
+
+    @PostMapping("/schedule/{id}")
+    public RedirectView newSchedule(
+            @PathVariable Long id,
+            @RequestParam String date
+    ) {
+        Question question = questionRepo.getOne(id);
+
+        try {
+            Date mydate = new SimpleDateFormat("yyyy-MM-dd").parse(date);
+        QuestionSchedule schedule = new QuestionSchedule();
+        schedule.setQuestion(question);
+        schedule.setDate(mydate);
+
+        questionScheduleRepo.save(schedule);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+
+        return new RedirectView("/admin/schedule");
+    }
+
+    // read sechdule
     @GetMapping("/schedule")
     public String getSchedulePanel(@AuthenticationPrincipal AdminUser user, Model model) {
         List<QuestionSchedule> schedules = questionScheduleRepo.findAll();
@@ -83,6 +120,12 @@ public class AdminPanelController {
         return "admin/schedule";
     }
 
+    // TODO: "update schedule" route
+
+    // TODO: "delete schedule" route
+
+
+    // question manipulation
     @GetMapping("/question")
     public String getQuestionPanel(@AuthenticationPrincipal AdminUser user, Model model){
         List<Question> questions = questionRepo.findAll();
