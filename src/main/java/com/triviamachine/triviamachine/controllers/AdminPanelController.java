@@ -1,19 +1,18 @@
 package com.triviamachine.triviamachine.controllers;
 
 import com.triviamachine.triviamachine.database.*;
+import com.triviamachine.triviamachine.util.ContentNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.annotation.PostConstruct;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/admin")
@@ -112,9 +111,39 @@ public class AdminPanelController {
         return new RedirectView("/admin/question");
     }
 
-    //TODO: "update question" route
 
-    //TODO: "delete question" route
+    @PostMapping("/question/{id}")
+    public Question updateQuestion(
+            @PathVariable Long id,
+            @RequestBody Question question,
+            @RequestParam String questionText,
+            @RequestParam String answerOne,
+            @RequestParam String answerTwo,
+            @RequestParam String answerThree,
+            @RequestParam String answerFour
+    ) {
+        Optional<Question> questions = this.questionRepo.findById(id);
+        if (questions.isPresent()) {
+            Question foundQuestion = questions.get();
+
+            foundQuestion.setQuestionText(questionText);
+            foundQuestion.setAnswerOne(answerOne);
+            foundQuestion.setAnswerTwo(answerTwo);
+            foundQuestion.setAnswerThree(answerThree);
+            foundQuestion.setAnswerFour(answerFour);
+
+            foundQuestion = this.questionRepo.save(foundQuestion);
+            return foundQuestion;
+        }
+        throw new ContentNotFoundException();
+    }
+
+
+        @DeleteMapping("question/{id}")
+        public void deleteQuestion(@PathVariable Long id) {
+        this.questionRepo.deleteById(id);
+        }
+
 
     @GetMapping("/results")
     public String getResultsPanel(@AuthenticationPrincipal AdminUser user, Model model){
