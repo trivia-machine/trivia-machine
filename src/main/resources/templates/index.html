@@ -25,10 +25,12 @@
     <section>
         <h2 th:text="${question.getQuestionText()}"></h2>
         <form>
+
             <button class="vote" id="1" th:text="${question.getAnswerOne()}"></button>
             <button class="vote" id="2" th:text="${question.getAnswerTwo()}"></button>
             <button class="vote" id="3" th:text="${question.getAnswerThree()}"></button>
             <button class="vote" id="4" th:text="${question.getAnswerFour()}"></button>
+
         </form>
     </section>
     <canvas></canvas>
