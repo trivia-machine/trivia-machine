@@ -6,10 +6,7 @@ import com.triviamachine.triviamachine.database.QuestionScheduleRepository;
 import com.triviamachine.triviamachine.database.Results;
 import com.triviamachine.triviamachine.database.ResultsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -28,8 +25,8 @@ public class VoteController {
     Gson gson;
 
 
-    @PostMapping("/{answer}")
-    public String vote(@PathVariable int answer) throws ParseException {
+    @PostMapping("/")
+    public String vote(@RequestParam int answer) throws ParseException {
         Date today = new Date(System.currentTimeMillis());
         String todayToString = dateFormat.format(today);
         today = dateFormat.parse(todayToString);

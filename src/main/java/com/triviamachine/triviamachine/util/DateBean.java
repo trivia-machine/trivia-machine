@@ -10,7 +10,7 @@ import java.text.SimpleDateFormat;
 public class DateBean {
     @Bean
     public DateFormat dateFomatter(){
-        DateFormat format = new SimpleDateFormat("yyyy/MM/dd");
+        DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         return format;
     }
 }
