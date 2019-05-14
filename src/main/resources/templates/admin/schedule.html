@@ -18,6 +18,10 @@
         <li class="schedule" th:each="schedule : ${schedules}">
             <p th:text="${schedule.date}"></p>
             <p th:text="${schedule.question.getQuestionText()}"></p>
+
+            <form th:action="${'/admin/schedule/' + schedule.getId()}" th:method="delete">
+                <button>Remove from Schedule</button>
+            </form>
         </li>
     </ul>
 </main>

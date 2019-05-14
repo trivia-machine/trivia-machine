@@ -78,8 +78,6 @@ public class AdminPanelController {
         return "redirect:/admin/schedule";
     }
 
-    // TODO: "create schedule" route
-
     @GetMapping("/schedule/{id}")
     public String scheduling(
             @PathVariable Long id,
@@ -112,7 +110,7 @@ public class AdminPanelController {
         return new RedirectView("/admin/schedule");
     }
 
-    // read sechdule
+    // read schedule
     @GetMapping("/schedule")
     public String getSchedulePanel(@AuthenticationPrincipal AdminUser user, Model model) {
         List<QuestionSchedule> schedules = questionScheduleRepo.findAll();
@@ -121,9 +119,14 @@ public class AdminPanelController {
         return "admin/schedule";
     }
 
-    // TODO: "update schedule" route
-
     // TODO: "delete schedule" route
+    @DeleteMapping("schedule/{id}")
+    public RedirectView deleteSchedule(
+            @PathVariable Long id
+    ) {
+        this.questionScheduleRepo.deleteById(id);
+        return new RedirectView("/admin/schedule");
+    }
 
 
     // question manipulation
