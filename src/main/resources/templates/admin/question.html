@@ -31,6 +31,7 @@
             <p th:text="${question.getAnswerTwo()}"></p>
             <p th:text="${question.getAnswerThree()}"></p>
             <p th:text="${question.getAnswerFour()}"></p>
+            <a th:href="${'/admin/schedule/' + question.getId()}">Schedule your Question</a>
         </li>
     </ul>
 </main>
