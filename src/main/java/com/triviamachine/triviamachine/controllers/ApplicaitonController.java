@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.util.Date;
+import java.util.List;
 
 @Controller
 @RequestMapping
@@ -29,7 +30,7 @@ public class ApplicaitonController {
     DateFormat dateFormat;
 
     @GetMapping("/login")
-    public String getLogin(@AuthenticationPrincipal AdminUser user, Model model){
+    public String getLogin(@AuthenticationPrincipal AdminUser user, Model model) {
         model.addAttribute("user", user);
         return "login";
     }
@@ -44,7 +45,7 @@ public class ApplicaitonController {
 
         QuestionSchedule currentQuestion = questionScheduleRepo.findByDate(today);
 
-        if(currentQuestion.getResults() == null){
+        if (currentQuestion.getResults() == null) {
             Results currentResults = new Results();
             currentResults.setQuestion(currentQuestion.getQuestion());
 
@@ -58,5 +59,15 @@ public class ApplicaitonController {
         model.addAttribute("question", currentQuestion.getQuestion());
 
         return "index";
+    }
+
+    @GetMapping("/results")
+    public String getOlderResults(@AuthenticationPrincipal AdminUser user, Model model) {
+        model.addAttribute("user", user);
+
+        List<Results> results = resultsRepo.findAll();
+        model.addAttribute("results", results);
+
+        return "results";
     }
 }
