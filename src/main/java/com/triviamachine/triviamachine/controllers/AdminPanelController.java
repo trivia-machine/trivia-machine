@@ -113,9 +113,8 @@ public class AdminPanelController {
 
 
     @PostMapping("/question/{id}")
-    public Question updateQuestion(
+    public RedirectView updateQuestion(
             @PathVariable Long id,
-            @RequestBody Question question,
             @RequestParam String questionText,
             @RequestParam String answerOne,
             @RequestParam String answerTwo,
@@ -132,17 +131,19 @@ public class AdminPanelController {
             foundQuestion.setAnswerThree(answerThree);
             foundQuestion.setAnswerFour(answerFour);
 
-            foundQuestion = this.questionRepo.save(foundQuestion);
-            return foundQuestion;
+            this.questionRepo.save(foundQuestion);
+
+            return new RedirectView("/admin/question");
         }
         throw new ContentNotFoundException();
     }
 
 
-        @DeleteMapping("question/{id}")
-        public void deleteQuestion(@PathVariable Long id) {
-        this.questionRepo.deleteById(id);
-        }
+    @DeleteMapping("question/{id}")
+    public RedirectView deleteQuestion(@PathVariable Long id) {
+    this.questionRepo.deleteById(id);
+    return new RedirectView("/admin/question");
+    }
 
 
     @GetMapping("/results")
