@@ -8,6 +8,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.util.Date;
+
 @Controller
 @RequestMapping
 public class ApplicaitonController {
@@ -21,6 +25,9 @@ public class ApplicaitonController {
     @Autowired
     AdminUserRepository adminRepo;
 
+    @Autowired
+    DateFormat dateFormat;
+
     @GetMapping("/login")
     public String getLogin(@AuthenticationPrincipal AdminUser user, Model model){
         model.addAttribute("user", user);
@@ -28,8 +35,28 @@ public class ApplicaitonController {
     }
 
     @GetMapping("")
-    public String getFrontPage(@AuthenticationPrincipal AdminUser user, Model model){
+    public String getFrontPage(@AuthenticationPrincipal AdminUser user, Model model) throws ParseException {
         model.addAttribute("user", user);
+
+        Date today = new Date(System.currentTimeMillis());
+        String todayToString = dateFormat.format(today);
+        today = dateFormat.parse(todayToString);
+
+        QuestionSchedule currentQuestion = questionScheduleRepo.findByDate(today);
+
+        if(currentQuestion.getResults() == null){
+            Results currentResults = new Results();
+            currentResults.setQuestion(currentQuestion.getQuestion());
+
+            currentQuestion.setResults(currentResults);
+            currentResults.setSchedule(currentQuestion);
+
+            resultsRepo.save(currentResults);
+            questionScheduleRepo.save(currentQuestion);
+        }
+
+        model.addAttribute("question", currentQuestion.getQuestion());
+
         return "index";
     }
 }

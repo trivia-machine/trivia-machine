@@ -3,10 +3,12 @@ package com.triviamachine.triviamachine.controllers;
 import com.triviamachine.triviamachine.database.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.annotation.PostConstruct;
@@ -50,19 +52,20 @@ public class AdminPanelController {
 
         QuestionSchedule testSched = new QuestionSchedule();
         testSched.setQuestion(dummyQuestion);
-        testSched.setDate(new Date(1557903600));
+//        long time = 1557903600000L;
+        testSched.setDate(new Date(1557817200000L));
 
         questionScheduleRepo.save(testSched);
 
-        Results results = new Results();
-        results.setAnswerOneVotes(4);
-        results.setAnswerTwoVotes(3);
-        results.setAnswerThreeVotes(8);
-        results.setAnswerFourVotes(9);
-        results.setQuestion(dummyQuestion);
-        results.setSchedule(testSched);
+//        Results results = new Results();
+//        results.setAnswerOneVotes(4);
+//        results.setAnswerTwoVotes(3);
+//        results.setAnswerThreeVotes(8);
+//        results.setAnswerFourVotes(9);
+//        results.setQuestion(dummyQuestion);
+//        results.setSchedule(testSched);
 
-        resultsRepo.save(results);
+//        resultsRepo.save(results);
 
         return new RedirectView("/admin");
     }
