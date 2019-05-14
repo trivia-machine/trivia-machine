@@ -18,14 +18,12 @@
 
     <section>
         <h2 th:text="${question.getQuestionText()}"></h2>
-        <div>
-
+        <form>
             <button formaction="/vote/1" formmethod="post" th:text="${question.getAnswerOne()}"></button>
             <button formaction="/vote/2" formmethod="post" th:text="${question.getAnswerTwo()}"></button>
             <button formaction="/vote/3" formmethod="post" th:text="${question.getAnswerThree()}"></button>
             <button formaction="/vote/4" formmethod="post" th:text="${question.getAnswerFour()}"></button>
-
-        </div>
+        </form>
     </section>
 
 

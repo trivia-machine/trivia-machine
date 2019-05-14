@@ -19,6 +19,18 @@ public class Results {
     private int answerThreeVotes;
     private int answerFourVotes;
 
+    public void vote(int answer) {
+        if (answer == 1) {
+            answerOneVotes++;
+        } else if (answer == 2) {
+            answerTwoVotes++;
+        } else if (answer == 3) {
+            answerThreeVotes++;
+        } else if (answer == 4) {
+            answerFourVotes++;
+        }
+    }
+
 
     public Question getQuestion() {
         return question;
@@ -70,5 +82,16 @@ public class Results {
 
     public void setQuestion(Question question) {
         this.question = question;
+    }
+
+    public ResultsJsonModel convertToJson() {
+        ResultsJsonModel output = new ResultsJsonModel();
+
+        output.answerOneVotes = this.answerOneVotes;
+        output.answerTwoVotes = this.answerTwoVotes;
+        output.answerThreeVotes = this.answerThreeVotes;
+        output.answerFourVotes = this.answerFourVotes;
+
+        return output;
     }
 }
