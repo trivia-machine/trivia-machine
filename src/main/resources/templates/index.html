@@ -24,7 +24,7 @@
 
     <section>
         <h2 th:text="${question.getQuestionText()}"></h2>
-        <form>
+        <form class="voteform">
 
             <button class="vote" id="1" th:text="${question.getAnswerOne()}"></button>
             <button class="vote" id="2" th:text="${question.getAnswerTwo()}"></button>

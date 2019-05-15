@@ -19,7 +19,7 @@ function handleVote(event){
 function showResults(results){
 results=JSON.parse(results);
     $('form').css('display','none');
-//    $('canvas').css('display','block');
+    $('canvas').css('display','block');
 
     let voteOptionNames = [$('#1').text(), $('#2').text(), $('#3').text(), $('#4').text()];
 
