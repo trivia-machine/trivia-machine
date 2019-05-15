@@ -29,8 +29,8 @@
             <h2 th:text="${question.getQuestionText()}"></h2>
             <p th:text="${question.getAnswerOne()}"></p>
             <p th:text="${question.getAnswerTwo()}"></p>
-            <p th:text="${question.getAnswerThree()}"></p>
-            <p th:text="${question.getAnswerFour()}"></p>
+            <p th:if="${question.getAnswerThree() != ''}" th:text="${question.getAnswerThree()}"></p>
+            <p th:if="${question.getAnswerFour() != ''}" th:text="${question.getAnswerFour()}"></p>
             <a th:href="${'/admin/schedule/' + question.getId()}">Schedule your Question</a>
             <a th:href="${'/admin/update/' + question.getId()}">Update</a>
             <form th:action="${'/admin/question/' + question.getId()}" th:method="delete">
