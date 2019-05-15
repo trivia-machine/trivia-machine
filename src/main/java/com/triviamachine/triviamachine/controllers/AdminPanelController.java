@@ -40,37 +40,6 @@ public class AdminPanelController {
 
     }
 
-    @GetMapping("/test")
-    public RedirectView dummyData(){
-
-        Question dummyQuestion = new Question();
-        dummyQuestion.setQuestionText("Test!");
-        dummyQuestion.setAnswerOne("ONE");
-        dummyQuestion.setAnswerTwo("TWO");
-        dummyQuestion.setAnswerThree("THREE");
-        dummyQuestion.setAnswerFour("FOUR");
-        questionRepo.save(dummyQuestion);
-
-        QuestionSchedule testSched = new QuestionSchedule();
-        testSched.setQuestion(dummyQuestion);
-//        long time = 1557903600000L;
-        testSched.setDate(new Date(1557817200000L));
-
-        questionScheduleRepo.save(testSched);
-
-//        Results results = new Results();
-//        results.setAnswerOneVotes(4);
-//        results.setAnswerTwoVotes(3);
-//        results.setAnswerThreeVotes(8);
-//        results.setAnswerFourVotes(9);
-//        results.setQuestion(dummyQuestion);
-//        results.setSchedule(testSched);
-
-//        resultsRepo.save(results);
-
-        return new RedirectView("/admin");
-    }
-
 
     // schedule manipulation
     @GetMapping("")
