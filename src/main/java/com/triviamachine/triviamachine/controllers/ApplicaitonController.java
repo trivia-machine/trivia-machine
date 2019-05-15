@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.annotation.PostConstruct;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.util.Date;
@@ -35,6 +36,20 @@ public class ApplicaitonController {
         return "login";
     }
 
+    @PostConstruct
+    public void ensureFallbackQuestionExists() {
+        List<Question> allQuestions = questionRepo.findAll();
+        if (allQuestions.size() == 0) {
+            Question fallback = new Question();
+            fallback.setQuestionText("Cake or Pie?");
+            fallback.setAnswerOne("Cake");
+            fallback.setAnswerTwo("Pie");
+            fallback.setAnswerThree("");
+            fallback.setAnswerFour("");
+            questionRepo.save(fallback);
+        }
+    }
+
     @GetMapping("")
     public String getFrontPage(@AuthenticationPrincipal AdminUser user, Model model) throws ParseException {
         model.addAttribute("user", user);
@@ -44,6 +59,15 @@ public class ApplicaitonController {
         today = dateFormat.parse(todayToString);
 
         QuestionSchedule currentQuestion = questionScheduleRepo.findByDate(today);
+        if (currentQuestion == null) {
+            List<Question> allQuestions = questionRepo.findAll();
+            currentQuestion = new QuestionSchedule();
+            currentQuestion.setQuestion(allQuestions.get(
+                    (int) Math.floor(Math.random() * (allQuestions.size()))
+            ));
+            currentQuestion.setDate(dateFormat.parse(dateFormat.format(new Date())));
+            questionScheduleRepo.save(currentQuestion);
+        }
 
         if (currentQuestion.getResults() == null) {
             Results currentResults = new Results();
