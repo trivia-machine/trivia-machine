@@ -21,9 +21,9 @@
             result.getAnswerOneVotes()}"></p>
             <p th:text="${result.getQuestion().getAnswerTwo() + ': ' +
             result.getAnswerTwoVotes()}"></p>
-            <p th:text="${result.getQuestion().getAnswerThree() + ': ' +
+            <p th:if="${result.getQuestion().getAnswerThree() != ''}" th:text="${result.getQuestion().getAnswerThree() + ': ' +
             result.getAnswerThreeVotes()}"></p>
-            <p th:text="${result.getQuestion().getAnswerFour() + ': ' +
+            <p th:if="${result.getQuestion().getAnswerFour() != ''}" th:text="${result.getQuestion().getAnswerFour() + ': ' +
             result.getAnswerFourVotes()}"></p>
         </li>
     </ul>
