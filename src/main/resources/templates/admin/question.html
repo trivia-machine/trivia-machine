@@ -21,6 +21,14 @@
         <input type="text" name="answerTwo" placeholder="Answer Two" required>
         <input type="text" name="answerThree" placeholder="Answer Three (optional)">
         <input type="text" name="answerFour" placeholder="Answer Four (optional)">
+        <select name="correctAnswer">
+            <option val="0" selected disabled>Correct Answer</option>
+            <option val="0">None</option>
+            <option val="1">1</option>
+            <option val="2">2</option>
+            <option val="3">3</option>
+            <option val="4">4</option>
+        </select>
         <button type="submit">Create New Question</button>
     </form>
 
@@ -31,6 +39,8 @@
             <p th:text="${question.getAnswerTwo()}"></p>
             <p th:if="${question.getAnswerThree() != ''}" th:text="${question.getAnswerThree()}"></p>
             <p th:if="${question.getAnswerFour() != ''}" th:text="${question.getAnswerFour()}"></p>
+            <p th:if="${question.getCorrectAnswer() != 0}"
+               th:text="${'Correct answer: ' + question.getCorrectAnswer()}"></p>
             <a th:href="${'/admin/schedule/' + question.getId()}">Schedule your Question</a>
             <a th:href="${'/admin/update/' + question.getId()}">Update</a>
             <form th:action="${'/admin/question/' + question.getId()}" th:method="delete">
