@@ -11,6 +11,8 @@
     <div th:replace="~{common :: navbar}"></div>
 </header>
 
+<h2 th:if="${error}" class="error" th:text="${'There is already a question scheduled on that day'}"></h2>
+
 <form th:action="${'/admin/schedule/' + question.getId()}" method="post">
     <h2 th:text="${question.getQuestionText()}"></h2>
     <input type="date" name="date" placeholder="Date" required>

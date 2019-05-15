@@ -128,3 +128,8 @@ main > ul > li button {
 main > ul > li > h2 {
     margin-bottom: 0.5rem;
 }
+
+.error{
+    font-size: 2rem;
+    color: red;
+}

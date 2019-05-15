@@ -43,7 +43,7 @@ public class AdminPanelController {
 
     // schedule manipulation
     @GetMapping("")
-    public String adminPanelDefaultRoute(){
+    public String adminPanelDefaultRoute() {
         return "redirect:/admin/schedule";
     }
 
@@ -52,9 +52,20 @@ public class AdminPanelController {
     public String scheduling(
             @PathVariable Long id,
             Model model
-    ){
+    ) {
         Optional<Question> question = questionRepo.findById(id);
         model.addAttribute("question", question.get());
+        return "admin/scheduling";
+    }
+
+    @GetMapping("/schedule/{id}/error")
+    public String schedulingError(
+            @PathVariable Long id,
+            Model model
+    ) {
+        Optional<Question> question = questionRepo.findById(id);
+        model.addAttribute("question", question.get());
+        model.addAttribute("error", true);
         return "admin/scheduling";
     }
 
@@ -67,11 +78,16 @@ public class AdminPanelController {
 
         try {
             Date mydate = new SimpleDateFormat("yyyy-MM-dd").parse(date);
-        QuestionSchedule schedule = new QuestionSchedule();
-        schedule.setQuestion(question);
-        schedule.setDate(mydate);
 
-        questionScheduleRepo.save(schedule);
+            if (questionScheduleRepo.findByDate(mydate) != null) {
+                return new RedirectView("/admin/schedule/" + id + "/error");
+            }
+
+            QuestionSchedule schedule = new QuestionSchedule();
+            schedule.setQuestion(question);
+            schedule.setDate(mydate);
+
+            questionScheduleRepo.save(schedule);
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -89,7 +105,6 @@ public class AdminPanelController {
         return "admin/schedule";
     }
 
-  
 
     @DeleteMapping("schedule/{id}")
     public RedirectView deleteSchedule(
@@ -100,10 +115,9 @@ public class AdminPanelController {
     }
 
 
-
     // question manipulation
     @GetMapping("/question")
-    public String getQuestionPanel(@AuthenticationPrincipal AdminUser user, Model model){
+    public String getQuestionPanel(@AuthenticationPrincipal AdminUser user, Model model) {
         List<Question> questions = questionRepo.findAll();
         model.addAttribute("user", user);
         model.addAttribute("questions", questions);
@@ -136,8 +150,7 @@ public class AdminPanelController {
     public String updateDefaultRoute(
             @PathVariable Long id,
             Model model
-    )
-    {
+    ) {
         Optional<Question> question = questionRepo.findById(id);
         model.addAttribute("question", question.get());
         return "admin/update";
@@ -173,13 +186,13 @@ public class AdminPanelController {
 
     @DeleteMapping("question/{id}")
     public RedirectView deleteQuestion(@PathVariable Long id) {
-    this.questionRepo.deleteById(id);
-    return new RedirectView("/admin/question");
+        this.questionRepo.deleteById(id);
+        return new RedirectView("/admin/question");
     }
 
 
     @GetMapping("/results")
-    public String getResultsPanel(@AuthenticationPrincipal AdminUser user, Model model){
+    public String getResultsPanel(@AuthenticationPrincipal AdminUser user, Model model) {
         List<Results> results = resultsRepo.findAll();
         model.addAttribute("user", user);
         model.addAttribute("results", results);
