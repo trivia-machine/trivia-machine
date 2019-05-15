@@ -16,10 +16,11 @@
 <main>
     <ul>
         <li class="schedule" th:each="schedule : ${schedules}">
-            <p th:text="${schedule.date}"></p>
+            <p th:text="${schedule.getDateToString()}"></p>
             <p th:text="${schedule.question.getQuestionText()}"></p>
 
-            <form th:action="${'/admin/schedule/' + schedule.getId()}" th:method="delete">
+            <form th:if="${schedule.isAfterToday()}" th:action="${'/admin/schedule/' + schedule.getId()}"
+                  th:method="delete">
                 <button>Remove from Schedule</button>
             </form>
         </li>
