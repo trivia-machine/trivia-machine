@@ -46,6 +46,7 @@ public class ApplicaitonController {
             fallback.setAnswerTwo("Pie");
             fallback.setAnswerThree("");
             fallback.setAnswerFour("");
+            fallback.setCorrectAnswer((byte) 0);
             questionRepo.save(fallback);
         }
     }

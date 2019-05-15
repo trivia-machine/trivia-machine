@@ -23,6 +23,10 @@ results=JSON.parse(results);
 
     let voteOptionNames = [$('#1').text(), $('#2').text(), $('#3').text(), $('#4').text()];
 
+    if(results.correctAnswer != 0){
+        voteOptionNames[results.correctAnswer - 1] = voteOptionNames[results.correctAnswer - 1] + ' (correct answer)';
+    }
+
     var ctx = $('canvas')[0].getContext('2d');
 
     let data = {

@@ -91,6 +91,7 @@ public class Results {
         output.answerTwoVotes = this.answerTwoVotes;
         output.answerThreeVotes = this.answerThreeVotes;
         output.answerFourVotes = this.answerFourVotes;
+        output.correctAnswer = this.question.getCorrectAnswer();
 
         return output;
     }

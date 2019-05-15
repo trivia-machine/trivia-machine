@@ -130,7 +130,8 @@ public class AdminPanelController {
             @RequestParam String answerOne,
             @RequestParam String answerTwo,
             @RequestParam String answerThree,
-            @RequestParam String answerFour
+            @RequestParam String answerFour,
+            @RequestParam Byte correctAnswer
     ) {
 
         Question question = new Question();
@@ -139,6 +140,7 @@ public class AdminPanelController {
         question.setAnswerTwo(answerTwo);
         question.setAnswerThree(answerThree);
         question.setAnswerFour(answerFour);
+        question.setCorrectAnswer(correctAnswer);
 
         questionRepo.save(question);
 

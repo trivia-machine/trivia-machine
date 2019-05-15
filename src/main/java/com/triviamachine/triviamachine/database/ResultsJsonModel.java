@@ -5,4 +5,5 @@ public class ResultsJsonModel {
     public int answerTwoVotes;
     public int answerThreeVotes;
     public int answerFourVotes;
+    public byte correctAnswer;
 }
