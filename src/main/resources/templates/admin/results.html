@@ -24,7 +24,7 @@
             result.getAnswerTwoVotes()}"></p>
             <p th:if="${result.getQuestion().getAnswerThree() != ''}" th:text="${result.getQuestion().getAnswerThree() + ': ' +
             result.getAnswerThreeVotes()}"></p>
-            <p th:if="${result.getQuestion().getAnswerThree() != ''}" th:text="${result.getQuestion().getAnswerFour() + ': ' +
+            <p th:if="${result.getQuestion().getAnswerFour() != ''}" th:text="${result.getQuestion().getAnswerFour() + ': ' +
             result.getAnswerFourVotes()}"></p>
             <!--TODO:Add date when time allows-->
         </li>
