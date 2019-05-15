@@ -102,6 +102,12 @@ results=JSON.parse(results);
 
     new Chart(ctx, options);
 
+    setTimeout(reset, 5000);
+}
+
+function reset() {
+        $('canvas').css('display','none');
+        $('form').css('display','flex');
 }
 
 $(document).ready(setupClicks);
