@@ -6,7 +6,7 @@
 body{
     max-width: 1200px;
     margin: 0 auto;
-    background-color: #EFCEFA;
+    background-color: #F7E8FC;
 }
 
 
@@ -30,15 +30,15 @@ p{
     font-size: 1rem;
 }
 
-nav > div {
-    display: inline-block;
-}
-
-
 nav {
     margin-bottom: 2em;
     display: flex;
     justify-content: space-around;
+    margin-top: 1em;
+}
+
+nav a {
+    font-size: 2rem;
 }
 
 form.voteform {
