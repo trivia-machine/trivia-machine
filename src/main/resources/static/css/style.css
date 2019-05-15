@@ -1,10 +1,12 @@
 * {
     font-family: 'Lato', sans-serif;
+    color: #333;
 }
 
 body{
     max-width: 1200px;
     margin: 0 auto;
+    background-color: #EFCEFA;
 }
 
 
@@ -41,7 +43,7 @@ nav {
 
 form.voteform {
     width: 80%;
-    height: 4.5rem;
+    height: 7rem;
     margin: 0 auto;
     display: flex;
     justify-content: space-around;
@@ -64,6 +66,11 @@ canvas{
 
 canvas{
     display: none;
+}
+
+button {
+    background-color: #D4B2D8;
+    border-color: #5D4E60;
 }
 
 @media all and (max-width: 500px) {
