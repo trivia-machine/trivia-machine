@@ -26,7 +26,7 @@
 
     <ul>
         <li class="question" th:each="question : ${questions}">
-            <p th:text="${question.getQuestionText()}"></p>
+            <h2 th:text="${question.getQuestionText()}"></h2>
             <p th:text="${question.getAnswerOne()}"></p>
             <p th:text="${question.getAnswerTwo()}"></p>
             <p th:text="${question.getAnswerThree()}"></p>

@@ -1,4 +1,4 @@
-* {
+main * {
     font-family: 'Lato', sans-serif;
     color: #333;
 }
@@ -26,8 +26,12 @@ h2{
     margin-bottom: 1rem;
 }
 
-p{
+main > p{
     font-size: 1rem;
+}
+
+main > form > * {
+    margin: 0.3rem 0;
 }
 
 nav {
@@ -39,6 +43,10 @@ nav {
 
 nav a {
     font-size: 1.8rem;
+}
+
+input[type=text] {
+    font-size: 1.2rem;
 }
 
 form.voteform {
@@ -71,6 +79,7 @@ canvas{
 button {
     background-color: #D4B2D8;
     border-color: #5D4E60;
+    font-size: 1.2rem;
 }
 
 @media all and (max-width: 500px) {
@@ -85,4 +94,37 @@ button {
     body{
         overflow: hidden;
     }
+}
+
+
+/*  Question List formatting */
+
+main > ul {
+    margin-top: 1rem;
+    line-height: 1.2em;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+font-size: 1.2  rem;
+}
+
+main > ul > li {
+display: inline-block;
+    width: 5 rem;
+    padding: 0.5rem;
+    border: 2px solid #826C7F;
+    margin: 0.5rem;
+
+}
+
+main > ul > li > a {
+    display: block;
+}
+
+main > ul > li button {
+    margin-top: 0.5rem;
+}
+
+main > ul > li > h2 {
+    margin-bottom: 0.5rem;
 }
