@@ -28,8 +28,10 @@
 
             <button class="vote" id="1" th:text="${question.getAnswerOne()}"></button>
             <button class="vote" id="2" th:text="${question.getAnswerTwo()}"></button>
-            <button class="vote" id="3" th:text="${question.getAnswerThree()}"></button>
-            <button class="vote" id="4" th:text="${question.getAnswerFour()}"></button>
+            <button th:if="${question.getAnswerThree()!=''}" class="vote" id="3"
+                    th:text="${question.getAnswerThree()}"></button>
+            <button th:if="${question.getAnswerFour()!=''}" class="vote" id="4"
+                    th:text="${question.getAnswerFour()}"></button>
 
         </form>
     </section>
