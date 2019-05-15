@@ -8,7 +8,7 @@ public class Results {
     @GeneratedValue
     private long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private Question question;
 
     @OneToOne

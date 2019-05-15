@@ -4,24 +4,21 @@
 <body>
 
 <head th:fragment="styling">
-    <link th:href="@{/reset.css}" rel="stylesheet" type="text/css">
-    <link th:href="@{/style.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/css/reset.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <nav th:fragment="navbar">
     <a th:href="@{/}">Trivia</a>
-    <div th:if="${user != null}">
-        <a th:href="@{/admin/schedule}">Schedule</a>
-        <a th:href="@{/admin/question}">Questions</a>
-        <a th:href="@{/admin/results}">Results</a>
-        <a th:href="@{/perform_logout}">Logout</a>
-    </div>
+    <a th:if="${user != null}" th:href="@{/admin/schedule}">Schedule</a>
+    <a th:if="${user != null}" th:href="@{/admin/question}">Questions</a>
+    <a th:if="${user != null}" th:href="@{/admin/results}">Results</a>
+    <a th:if="${user != null}" th:href="@{/perform_logout}">Logout</a>
 
-    <div th:if="${user==null}">
-        <a th:href="@{/results}">Results</a>
-        <a th:href="@{/login}">Admin</a>
-    </div>
+    <a th:if="${user==null}" th:href="@{/results}">Results</a>
+    <a th:if="${user==null}" th:href="@{/login}">Admin</a>
 
 
 </nav>

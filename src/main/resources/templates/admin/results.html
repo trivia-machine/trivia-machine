@@ -16,7 +16,8 @@
 <main>
     <ul>
         <li class="result" th:each="result : ${results}">
-            <p th:text="${result.getQuestion().getQuestionText()}"></p>
+            <h2 th:text="${result.getQuestion().getQuestionText()}"></h2>
+            <p th:text="${result.getSchedule().getDateToString()}"></p>
             <p th:text="${result.getQuestion().getAnswerOne() + ': ' +
             result.getAnswerOneVotes()}"></p>
             <p th:text="${result.getQuestion().getAnswerTwo() + ': ' +

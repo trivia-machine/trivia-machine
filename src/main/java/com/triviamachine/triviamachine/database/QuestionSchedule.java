@@ -1,6 +1,10 @@
 package com.triviamachine.triviamachine.database;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import javax.persistence.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Entity
@@ -11,6 +15,7 @@ public class QuestionSchedule {
 
     @ManyToOne
     private Question question;
+
 
     private Date date;
 
@@ -27,6 +32,10 @@ public class QuestionSchedule {
 
     public Date getDate() {
         return date;
+    }
+
+    public String getDateToString() {
+        return new SimpleDateFormat("yyyy-MM-dd").format(date);
     }
 
     public void setDate(Date date) {

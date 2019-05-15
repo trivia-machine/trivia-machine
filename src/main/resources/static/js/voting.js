@@ -19,7 +19,7 @@ function handleVote(event){
 function showResults(results){
 results=JSON.parse(results);
     $('form').css('display','none');
-//    $('canvas').css('display','block');
+    $('canvas').css('display','block');
 
     let voteOptionNames = [$('#1').text(), $('#2').text(), $('#3').text(), $('#4').text()];
 
@@ -60,10 +60,13 @@ results=JSON.parse(results);
     let options = {
                       type: 'horizontalBar',
                       data: data,
+//                      defaults: {
+//                        defaultFontSize: 20
+//                      },
                       options: {
                         drawTicks: false,
                         showLine: false,
-                        responsive: false,
+                        responsive: true,
                         animation: {
                           duration: 2000,
                           easing: 'easeInOutQuad'
@@ -87,7 +90,11 @@ results=JSON.parse(results);
                           }]
                         },
                         legend: {
-                          display: true
+                          display: true,
+                          labels: {
+//                            fontFamily: 'font-family: \'Lato\', sans-serif',
+                            fontSize: 20
+                          }
                         }
                       },
 

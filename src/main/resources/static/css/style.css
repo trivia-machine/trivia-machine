@@ -1,0 +1,130 @@
+main * {
+    font-family: 'Lato', sans-serif;
+    color: #333;
+}
+
+body{
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #F7E8FC;
+}
+
+
+
+main{
+    text-align: center;
+}
+
+h1{
+    font-weight: bold;
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+}
+
+h2{
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+main > p{
+    font-size: 1rem;
+}
+
+main > form > * {
+    margin: 0.3rem 0;
+}
+
+nav {
+    margin-bottom: 2em;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 1em;
+}
+
+nav a {
+    font-size: 1.8rem;
+}
+
+input[type=text] {
+    font-size: 1.2rem;
+}
+
+form.voteform {
+    width: 80%;
+    height: 7rem;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    align-items: stretch;
+}
+
+canvas{
+    width: 100%;
+}
+
+.voteform button{
+    width: 45%;
+    font-size: 2rem;
+}
+
+.voteform button:nth-of-type(1), .voteform button:nth-of-type(2){
+    margin-bottom: .5em;
+}
+
+canvas{
+    display: none;
+}
+
+button {
+    background-color: #D4B2D8;
+    border-color: #5D4E60;
+    font-size: 1.2rem;
+}
+
+@media all and (max-width: 500px) {
+    nav {
+        display: none;
+    }
+
+    form.voteform{
+        width: 100%;
+    }
+
+    body{
+        overflow: hidden;
+    }
+}
+
+
+/*  Question List formatting */
+
+main > ul {
+    margin-top: 1rem;
+    line-height: 1.2em;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+font-size: 1.2  rem;
+}
+
+main > ul > li {
+display: inline-block;
+    width: 5 rem;
+    padding: 0.5rem;
+    border: 2px solid #826C7F;
+    margin: 0.5rem;
+
+}
+
+main > ul > li > a {
+    display: block;
+}
+
+main > ul > li button {
+    margin-top: 0.5rem;
+}
+
+main > ul > li > h2 {
+    margin-bottom: 0.5rem;
+}
