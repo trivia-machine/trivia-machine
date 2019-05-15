@@ -43,7 +43,7 @@ public class QuestionSchedule {
     public boolean isAfterToday() throws ParseException {
         DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         Date today = formatter.parse(formatter.format(new Date()));
-        today = new Date(today.getTime() + TimeUnit.DAYS.toMillis(1));
+//        today = new Date(today.getTime() + TimeUnit.DAYS.toMillis(1));
         return this.date.after(today);
     }
 
