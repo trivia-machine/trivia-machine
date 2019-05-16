@@ -11,7 +11,8 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
-import static org.junit.Assert.*;
+import java.text.DateFormat;
+import java.util.Date;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -46,6 +47,9 @@ public class ApplicaitonControllerTest {
         @Autowired
         ResultsRepository resultsRepository;
 
+        @Autowired
+        DateFormat dateFormat;
+
         @Before
         public void setUp() {
             mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
@@ -58,11 +62,28 @@ public class ApplicaitonControllerTest {
                 .andExpect(status().isOk());
     }
 
-//    @Test
-//    public void getFrontPage() throws Exception{
-//        mockMvc.perform(MockMvcRequestBuilders.get(""))
-//                .andExpect(status().isOk());
-//    }
+    @Test
+    public void getFrontPage() throws Exception{
+        Question question = new Question();
+        question.setQuestionText("idk");
+        question.setAnswerOne("what");
+        question.setAnswerTwo("huh");
+
+        QuestionSchedule schedule = new QuestionSchedule();
+        schedule.setQuestion(question);
+
+        Date today = new Date(System.currentTimeMillis());
+        String todayToString = dateFormat.format(today);
+        today = dateFormat.parse(todayToString);
+
+        schedule.setDate(today);
+
+        questionRepository.save(question);
+        questionScheduleRepository.save(schedule);
+
+        mockMvc.perform(MockMvcRequestBuilders.get(""))
+                .andExpect(status().isOk());
+    }
 
     @Test
     public void getOlderResults() throws Exception {
