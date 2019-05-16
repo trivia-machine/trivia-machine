@@ -6,35 +6,35 @@
 
 ### Creation of the Default Admin
 
-![Default Admin](../assests/adminCreation.png)
+![Default Admin](../assets/adminCreation.png)
 
 ### Add a Question to the Schedule
 
-![Add to Schedule](../assests/addSchedule.png)
+![Add to Schedule](../assets/addSchedule.png)
 
 ### Create a New Question
 
-![New Question](../assests/questionCreation.png)
+![New Question](../assets/questionCreation.png)
 
 ### Update a Question
 
-![Update a Question](../assests/questionUpdate.png)
+![Update a Question](../assets/questionUpdate.png)
 
 ### Display the Results
 
-![Results](../assests/adminResults.png)
+![Results](../assets/adminResults.png)
 
 ## User Side
 
 ### Fallback Question
 
-![Fallback](../assests/fallbackQ.png)
+![Fallback](../assets/fallbackQ.png)
 
 ### Front Page Build
 
-![front page](../assests/index.png)
+![front page](../assets/index.png)
 
 ### Record the Votes
 
-![votes](../assests/votes.png)
+![votes](../assets/votes.png)
 

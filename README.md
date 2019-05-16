@@ -10,6 +10,8 @@
 
 * [Code Screen Shots](planning/screenShots.md)
 
+* [Application Screenshots](planning/applicationScreenShots.md)
+
 ## Project Description
 
 A device (intended to be placed in a common area) that displays the hourly forecast and a daily poll quetion. There will be 2/4 options to choose from in any given poll, answers will be stored in a database. The database info will be able to be viewed on an admin account.

@@ -4,20 +4,20 @@
 
 ### Scheduling
 
-![Scheduling Route](../assests/scheduling.png)
+![Scheduling Route](../assets/scheduling.png)
 
 ### Update a Question
 
-![Update Question](../assests/updateQRoute.png)
+![Update Question](../assets/updateQRoute.png)
 
 ### Admin Results
 
-![Admin Results](../assests/adminResultsR.png)
+![Admin Results](../assets/adminResultsR.png)
 
 ### Front Page
 
-![Front Page](../assests/frontPageRoute.png)
+![Front Page](../assets/frontPageRoute.png)
 
 ### Votes
 
-![Votes](../assests/votesR.png)
+![Votes](../assets/votesR.png)
