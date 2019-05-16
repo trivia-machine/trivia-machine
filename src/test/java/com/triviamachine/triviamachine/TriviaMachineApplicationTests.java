@@ -20,6 +20,7 @@ import org.springframework.web.context.WebApplicationContext;
 import java.text.DateFormat;
 import java.util.Date;
 
+import static org.junit.Assert.fail;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @RunWith(SpringRunner.class)
@@ -78,6 +79,53 @@ public class TriviaMachineApplicationTests {
 
         QuestionSchedule schedule = new QuestionSchedule();
         schedule.setQuestion(question);
+        schedule.setDate(dateFormat.parse("1234-01-05"));
+
+        questionRepository.save(question);
+        questionScheduleRepository.save(schedule);
+
+        long id = question.getId();
+
+        mockMvc.perform(MockMvcRequestBuilders.post("/admin/schedule/" + id).param("date", "1234-01-05"))
+                .andExpect(status().is(302));
+    }
+
+    // Confirms that a date can't be assigned two questions
+    @Test
+    public void adminSchedPostTestEmptyDate() throws Exception {
+
+        Question question = new Question();
+        question.setQuestionText("idk");
+        question.setAnswerOne("what");
+        question.setAnswerTwo("huh");
+
+        QuestionSchedule schedule = new QuestionSchedule();
+        schedule.setQuestion(question);
+        schedule.setDate(dateFormat.parse("1234-01-07"));
+
+        question = questionRepository.save(question);
+        schedule = questionScheduleRepository.save(schedule);
+
+        long id = question.getId();
+
+        mockMvc.perform(MockMvcRequestBuilders.post("/admin/schedule/" + id).param("date", "1234-03-07"))
+                .andExpect(status().is(302));
+
+        mockMvc.perform(MockMvcRequestBuilders.post("/admin/schedule/" + id).param("date", "1234-03-07"))
+                .andExpect(status().is(302))
+                .andExpect(redirectedUrl("/admin/schedule/" + id + "/error"));
+    }
+
+    @Test
+    public void adminSchedPostTestBadDate() throws Exception {
+
+        Question question = new Question();
+        question.setQuestionText("idk");
+        question.setAnswerOne("what");
+        question.setAnswerTwo("huh");
+
+        QuestionSchedule schedule = new QuestionSchedule();
+        schedule.setQuestion(question);
         schedule.setDate(dateFormat.parse(dateFormat.format(new Date())));
 
         questionRepository.save(question);
@@ -85,8 +133,7 @@ public class TriviaMachineApplicationTests {
 
         long id = question.getId();
 
-        mockMvc.perform(MockMvcRequestBuilders.post("/admin/schedule/" + id + "?date=1222-01-21"))
-                .andExpect(status().is(302));
+        mockMvc.perform(MockMvcRequestBuilders.post("/admin/schedule/" + id + "?date=12f22-01-21")).andExpect(status().is(400));
     }
 
     @Test

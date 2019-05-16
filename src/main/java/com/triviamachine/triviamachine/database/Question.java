@@ -18,7 +18,7 @@ public class Question {
     private String answerTwo;
     private String answerThree;
     private String answerFour;
-    private Byte correctAnswer;
+    private byte correctAnswer;
 
     @OneToMany(mappedBy = "question")
     private List<Results> questionResults;
