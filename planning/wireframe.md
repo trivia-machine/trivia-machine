@@ -2,7 +2,7 @@
 
 [Computer Made Wireframe Image](https://app.moqups.com/yHvt3Z6W4O/view)
 
-![Wire Frame Image](../assests/wireframe.jpg)
+![Wire Frame Image](../assets/wireframe.jpg)
 
 ## User View
 
