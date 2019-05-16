@@ -167,6 +167,7 @@ public class TriviaMachineApplicationTests {
 		question.setQuestionText("idk");
 		question.setAnswerOne("what");
 		question.setAnswerTwo("huh");
+		question.setCorrectAnswer((byte)0);
 
 		questionRepository.save(question);
 
@@ -239,6 +240,7 @@ public class TriviaMachineApplicationTests {
 		question.setQuestionText("idk");
 		question.setAnswerOne("what");
 		question.setAnswerTwo("huh");
+		question.setCorrectAnswer((byte)1);
 
 		QuestionSchedule schedule = new QuestionSchedule();
 		schedule.setQuestion(question);
