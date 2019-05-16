@@ -76,10 +76,12 @@ public class VoteControllerTest {
         results.setAnswerOneVotes(4);
         results.setAnswerTwoVotes(5);
 
+        schedule.setResults(results);
+
         schedule.setDate(today);
         questionRepository.save(question);
-        questionScheduleRepository.save(schedule);
         resultsRepository.save(results);
+        questionScheduleRepository.save(schedule);
 
         mockMvc.perform(MockMvcRequestBuilders.post("/vote/").param("answer", "1"))
                 .andExpect(status().isOk());
