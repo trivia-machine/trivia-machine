@@ -73,7 +73,7 @@ public class AdminPanelController {
     public RedirectView newSchedule(
             @PathVariable Long id,
             @RequestParam String date
-    ) {
+    ) throws ParseException {
         Question question = questionRepo.getOne(id);
 
         try {
@@ -90,6 +90,7 @@ public class AdminPanelController {
             questionScheduleRepo.save(schedule);
         } catch (ParseException e) {
             e.printStackTrace();
+            throw e;
         }
 
 
