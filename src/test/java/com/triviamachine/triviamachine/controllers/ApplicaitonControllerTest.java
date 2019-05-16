@@ -1,4 +1,5 @@
 package com.triviamachine.triviamachine.controllers;
+
 import com.triviamachine.triviamachine.database.*;
 import org.hamcrest.Matchers;
 import org.junit.Before;
@@ -11,8 +12,10 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
+
 import java.text.DateFormat;
 import java.util.Date;
+
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -21,49 +24,49 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 public class ApplicaitonControllerTest {
 
-        private MockMvc mockMvc;
+    private MockMvc mockMvc;
 
-        @Autowired
-        public WebApplicationContext webApplicationContext;
+    @Autowired
+    public WebApplicationContext webApplicationContext;
 
-        @Autowired
-        AdminPanelController adminPanelController;
+    @Autowired
+    AdminPanelController adminPanelController;
 
-        @Autowired
-        ApplicaitonController applicaitonController;
+    @Autowired
+    ApplicaitonController applicaitonController;
 
-        @Autowired
-        VoteController voteController;
+    @Autowired
+    VoteController voteController;
 
-        @Autowired
-        AdminUserRepository adminUserRepository;
-        //
-        @Autowired
-        QuestionRepository questionRepository;
+    @Autowired
+    AdminUserRepository adminUserRepository;
+    //
+    @Autowired
+    QuestionRepository questionRepository;
 
-        @Autowired
-        QuestionScheduleRepository questionScheduleRepository;
+    @Autowired
+    QuestionScheduleRepository questionScheduleRepository;
 
-        @Autowired
-        ResultsRepository resultsRepository;
+    @Autowired
+    ResultsRepository resultsRepository;
 
-        @Autowired
-        DateFormat dateFormat;
+    @Autowired
+    DateFormat dateFormat;
 
-        @Before
-        public void setUp() {
-            mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
-        }
+    @Before
+    public void setUp() {
+        mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
+    }
 
 
-        @Test
-    public void getLogin() throws Exception{
+    @Test
+    public void getLogin() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/login"))
                 .andExpect(status().isOk());
     }
 
     @Test
-    public void getFrontPage() throws Exception{
+    public void getFrontPage() throws Exception {
         Question question = new Question();
         question.setQuestionText("idk");
         question.setAnswerOne("what");
@@ -91,23 +94,30 @@ public class ApplicaitonControllerTest {
         question.setQuestionText("idk");
         question.setAnswerOne("what");
         question.setAnswerTwo("huh");
-        question.setCorrectAnswer((byte)1);
+        question.setCorrectAnswer((byte) 1);
 
         QuestionSchedule schedule = new QuestionSchedule();
         schedule.setQuestion(question);
+        schedule.setDate(dateFormat.parse(dateFormat.format(new Date())));
 
         Results results = new Results();
         results.setQuestion(question);
+
         results.setAnswerOneVotes(4);
         results.setAnswerTwoVotes(5);
 
+        schedule.setResults(results);
+
         questionRepository.save(question);
+
+        results = resultsRepository.save(results);
 
         questionScheduleRepository.save(schedule);
 
-        resultsRepository.save(results);
+        results.setSchedule(schedule);
+        results = resultsRepository.save(results);
 
-        long id=question.getId();
+        long id = question.getId();
 
         mockMvc.perform(MockMvcRequestBuilders.post("/admin/schedule/" + id + "?date=1222-01-21"))
                 .andExpect(status().is(302));
