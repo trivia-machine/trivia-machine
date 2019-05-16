@@ -1,6 +1,7 @@
 package com.triviamachine.triviamachine.controllers;
 
 import com.triviamachine.triviamachine.database.*;
+import com.triviamachine.triviamachine.util.BadDateException;
 import com.triviamachine.triviamachine.util.ContentNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -73,7 +74,7 @@ public class AdminPanelController {
     public RedirectView newSchedule(
             @PathVariable Long id,
             @RequestParam String date
-    ) {
+    ) throws ParseException {
         Question question = questionRepo.getOne(id);
 
         try {
@@ -89,7 +90,8 @@ public class AdminPanelController {
 
             questionScheduleRepo.save(schedule);
         } catch (ParseException e) {
-            e.printStackTrace();
+//            e.printStackTrace();
+            throw new BadDateException(e.getMessage(), e.getErrorOffset());
         }
 
 
