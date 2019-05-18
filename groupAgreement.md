@@ -56,3 +56,6 @@
       - Make sure that everyone get a chance to voice their ideas and thoughts.
       - Make sure everyone gets a chance to finish their sentences.
       - Verbal yes or no from everyone on decisions.
+      
+      
+BOOP
