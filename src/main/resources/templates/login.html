@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <div th:replace="~{common :: styling}"></div>
+    <title>Login</title>
+</head>
+<body>
+
+<header>
+    <div th:replace="~{common :: navbar}"></div>
+</header>
+
+<main>
+    <form action="perform_login" method="post">
+        <input type="text" name="username" placeholder="Username" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <button type="submit">Admin Login</button>
+    </form>
+</main>
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Scheduling</title>
+    <div th:replace="~{common :: styling}"></div>
+</head>
+<body>
+<header>
+    <div th:replace="~{common :: navbar}"></div>
+</header>
+
+<h2 th:if="${error}" class="error" th:text="${'There is already a question scheduled on that day'}"></h2>
+
+<form th:action="${'/admin/schedule/' + question.getId()}" method="post">
+    <h2 th:text="${question.getQuestionText()}"></h2>
+    <input type="date" name="date" placeholder="Date" required>
+    <button type="submit">Schedule Your Question</button>
+</form>
+
+</body>
+</html>

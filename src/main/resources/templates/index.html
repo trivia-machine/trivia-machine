@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <div th:replace="~{common :: styling}"></div>
+    <title>Trvia Machine</title>
+    <script
+            src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script th:src="@{/js/voting.js}"></script>
+</head>
+<body>
+
+<header>
+    <div th:replace="~{common :: navbar}"></div>
+</header>
+
+<main>
+    <h1>Welcome to Trivia Machine!</h1>
+
+
+    <section>
+        <h2 th:text="${question.getQuestionText()}"></h2>
+        <form class="voteform">
+
+            <button class="vote" id="1" th:text="${question.getAnswerOne()}"></button>
+            <button class="vote" id="2" th:text="${question.getAnswerTwo()}"></button>
+            <button th:if="${question.getAnswerThree()!=''}" class="vote" id="3"
+                    th:text="${question.getAnswerThree()}"></button>
+            <button th:if="${question.getAnswerFour()!=''}" class="vote" id="4"
+                    th:text="${question.getAnswerFour()}"></button>
+
+        </form>
+    </section>
+    <canvas></canvas>
+
+
+</main>
+
+</body>
+
+
+</html>

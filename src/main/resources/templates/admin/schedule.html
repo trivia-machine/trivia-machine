@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Admin Schedule Panel</title>
+    <div th:replace="~{common :: styling}"></div>
+</head>
+
+<body>
+<header>
+    <div th:replace="~{common :: navbar}"></div>
+</header>
+
+
+<main>
+    <ul>
+        <li class="schedule" th:each="schedule : ${schedules}">
+            <p th:text="${schedule.getDateToString()}"></p>
+            <p th:text="${schedule.question.getQuestionText()}"></p>
+
+            <form th:if="${schedule.isAfterToday()}" th:action="${'/admin/schedule/' + schedule.getId()}"
+                  th:method="delete">
+                <button>Remove from Schedule</button>
+            </form>
+        </li>
+    </ul>
+</main>
+
+
+<footer>
+
+</footer>
+</body>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Admin Question Manipulation</title>
+    <div th:replace="~{common :: styling}"></div>
+</head>
+
+<body>
+<header>
+    <div th:replace="~{common :: navbar}"></div>
+</header>
+
+
+<main>
+
+    <form action="/admin/createQuestion" method="post">
+        <input type="text" name="questionText" placeholder="Question?" required>
+        <input type="text" name="answerOne" placeholder="Answer One" required>
+        <input type="text" name="answerTwo" placeholder="Answer Two" required>
+        <input type="text" name="answerThree" placeholder="Answer Three (optional)">
+        <input type="text" name="answerFour" placeholder="Answer Four (optional)">
+        <select name="correctAnswer">
+            <option value="0" selected hidden>Correct Answer</option>
+            <option value="0">None</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+        </select>
+        <button type="submit">Create New Question</button>
+    </form>
+
+    <ul>
+        <li class="question" th:each="question : ${questions}">
+            <h2 th:text="${question.getQuestionText()}"></h2>
+            <p th:text="${question.getAnswerOne()}"></p>
+            <p th:text="${question.getAnswerTwo()}"></p>
+            <p th:if="${question.getAnswerThree() != ''}" th:text="${question.getAnswerThree()}"></p>
+            <p th:if="${question.getAnswerFour() != ''}" th:text="${question.getAnswerFour()}"></p>
+            <p th:if="${question.getCorrectAnswer() == 1}"
+               th:text="${'Correct answer: ' + question.getAnswerOne()}"></p>
+            <p th:if="${question.getCorrectAnswer() == 2}"
+               th:text="${'Correct answer: ' + question.getAnswerTwo()}"></p>
+            <p th:if="${question.getCorrectAnswer() == 3}"
+               th:text="${'Correct answer: ' + question.getAnswerThree()}"></p>
+            <p th:if="${question.getCorrectAnswer() == 4}"
+               th:text="${'Correct answer: ' + question.getAnswerFour()}"></p>
+            <a th:href="${'/admin/schedule/' + question.getId()}">Schedule your Question</a>
+            <a th:href="${'/admin/update/' + question.getId()}">Update</a>
+            <form th:action="${'/admin/question/' + question.getId()}" th:method="delete">
+                <button>Delete</button>
+            </form>
+
+        </li>
+    </ul>
+</main>
+
+
+<footer>
+
+</footer>
+</body>
